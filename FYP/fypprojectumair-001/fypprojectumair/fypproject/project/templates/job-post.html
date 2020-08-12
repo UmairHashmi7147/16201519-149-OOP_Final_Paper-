@@ -1,0 +1,213 @@
+{%  extends 'header1.html' %}
+{% load static %}
+
+  {% block myblock %}
+
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
+
+    <div class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_1.jpg' %});" data-stellar-background-ratio="1">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-start">
+          <div class="col-md-12 ftco-animate text-center mb-5">
+          	<p class="breadcrumbs mb-0"><span class="mr-3"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Job Post</span></p>
+            <h1 class="mb-3 bread">Dashboard</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="ftco-section">
+    	<div class="container">
+			<div id="about" class="section">
+                <div class="addo-about">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <h2>Active Status</h2>
+
+
+                               {% if status == True %}
+
+                            <label style="margin-top:1%" class="switch">
+                                  <a href="/changestatus/"><input type="checkbox" checked>
+                                  <span class="slider round"></span></a>
+                            </label>
+                            {% endif %}
+                            {% if status == False %}
+                            <label style="margin-top:1%" class="switch">
+                                  <a href="/changestatus/"><input type="checkbox" >
+                                  <span class="slider round"></span></a>
+                            </label>
+                            {% endif %}
+
+
+
+                            <div class="col-md-12"> <span class="heading-meta">Information</span>
+
+                                <h2 class="addo-heading animate-box" data-animate-effect="fadeInLeft">About Me</h2>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5"> <img src="{{image.url}}" width="240" class="img-fluid mb-30 animate-box" data-animate-effect="fadeInLeft" alt="not found"> </div>
+                            <div class="col-md-7 animate-box" data-animate-effect="fadeInLeft"> <span class="heading-meta">ABOUT ME</span>
+                                <h2 class="cd-headline clip">
+                                    <span>I'm {{name}} </span>
+                                    <span class="cd-words-wrapper">
+                                        <b class="is-visible">{{title}}</b>
+                                    </span>
+                                </h2>
+                                <p>{{description}}</p>
+                                <div class="addo-about-contact-wrap">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p><b>Birthday:</b> {{dob}}</p>
+                                            <p><b>CNIC:</b> {{cnic}}</p>
+                                            <p><b>Phone:</b> {{mobile_number}}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><b>Degree:</b> {{degree_level}}</p>
+                                            <p><b>Career Level:</b> {{career_level}}</p>
+                                            <p><b>Mail:</b> {{email}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                              {%  if name == "" %}  <ul class="navbar-nav ml-auto">
+                                  <!--<li><button class="nav-item cta mr-md-1" class="nav-link">HIRE ME</button></li>-->
+                                  <li><button ><a href="/pdf/" class="nav-link">Download CV</a></button></li>
+                                </ul>{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Skills Section -->
+            <div id="skills" class="section">
+                <div class="addo-skills">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12"> <span class="heading-meta">Abilities</span>
+                                <h2 class="addo-heading animate-box" data-animate-effect="fadeInLeft">My Skills</h2> </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+                                {% for x in skills %}
+                                <li>{{x}}</li>
+                                {%endfor%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    	</div>
+    </section>
+
+
+    <section class="ftco-section services-section" style="margin-top:-7%">
+      <div class="container">
+        <div class="row d-flex">
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block">
+              <div class="icon"><span class="flaticon-resume"></span></div>
+              <div class="media-body">
+                <h3 class="heading mb-3">Search Millions of Jobs</h3>
+                <p>A small river named Duden flows by their place and supplies.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block">
+              <div class="icon"><span class="flaticon-team"></span></div>
+              <div class="media-body">
+                <h3 class="heading mb-3">Easy To Manage Jobs</h3>
+                <p>A small river named Duden flows by their place and supplies.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block">
+              <div class="icon"><span class="flaticon-career"></span></div>
+              <div class="media-body">
+                <h3 class="heading mb-3">Top Careers</h3>
+                <p>A small river named Duden flows by their place and supplies.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block">
+              <div class="icon"><span class="flaticon-employees"></span></div>
+              <div class="media-body">
+                <h3 class="heading mb-3">Search Expert Candidates</h3>
+                <p>A small river named Duden flows by their place and supplies.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+{% endblock %}

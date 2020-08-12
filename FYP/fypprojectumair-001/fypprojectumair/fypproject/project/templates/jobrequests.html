@@ -1,0 +1,143 @@
+{%  extends 'header3.html' %}
+{% load static %}
+
+  {% block myblock %}
+
+{% if param %}
+            <style>
+
+    .container{
+  margin: 20px;
+}
+
+/* autocomplete tagsinput*/
+.label-info {
+  background-color: #5bc0de;
+  display: inline-block;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25em;
+}
+
+
+    table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+</style>
+<br>
+<br>
+    <h2>Recommend Requests</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Discription</th>
+            <th scope="col">View</th>
+            <th scope="col">Accept</th>
+            <th scope="col">Reject</th>
+<!--            <th scope="col">Recommend</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        {% for data in param %}
+
+        <tr>
+
+            <th scope="row">{{ forloop.counter }}</th>
+            {% if data.job_title == '1000' %}
+            <td>Full stack web developer</td>
+            {% endif %}
+            {% if data.job_title == '2000' %}
+            <td>Mobile Application Developer</td>
+            {% endif %}
+            {% if data.job_title == '3000' %}
+            <td>Front end developer</td>
+            {% endif %}
+            {% if data.job_title == '4000' %}
+            <td>Backend Developer</td>
+            {% endif %}
+<!--            <td>{{ data.job_title }}</td>-->
+            <td>{{ data.job_description }}</td>
+            <td style="color : white"><a style=" background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;" href="{{data.get_job_data_urls}}">View</a></td>
+            <td style="color : white"><a style=" background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;" href="{{data.get_job_accept_urls}}">Accept</a></td>
+            <td style="color : white"><a style=" background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;" href="{{data.get_absolute_urls}}">Reject</a></td>
+<!--            <td style="color : white" ><a style=" background-color: #4CAF50;-->
+<!--  border: none;-->
+<!--  color: white;-->
+<!--  padding: 15px 32px;-->
+<!--  text-align: center;-->
+<!--  text-decoration: none;-->
+<!--  display: inline-block;-->
+<!--  font-size: 16px;-->
+<!--  margin: 4px 2px;-->
+<!--  cursor: pointer;" href="{{data.get_request_urls}}">Request to Admin</a></td>-->
+
+
+
+
+        </tr>
+
+
+        {% endfor %}
+
+
+
+
+        </tbody>
+    </table>
+{% endif %}
+
+
+
+
+
+
+{% endblock %}

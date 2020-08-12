@@ -1,0 +1,87 @@
+{%  extends 'header.html' %}
+{% load static %}
+
+  {% block myblock %}
+
+<!--<body>-->
+<!--    <textarea id="chat-log" cols="100" rows="20"></textarea><br>-->
+<!--    <input id="chat-message-input" type="text" size="100"><br>-->
+<!--    <input id="chat-message-submit" type="button" value="Send">-->
+<!--    {{ room_name|json_script:"room-name" }}-->
+<!--    <script>-->
+<!--        const roomName = JSON.parse(document.getElementById('room-name').textContent);-->
+
+<!--        const chatSocket = new WebSocket(-->
+<!--            'ws://'-->
+<!--            + window.location.host-->
+<!--            + '/ws/chat/'-->
+<!--            + roomName-->
+<!--            + '/'-->
+<!--        );-->
+
+<!--        chatSocket.onmessage = function(e) {-->
+<!--            const data = JSON.parse(e.data);-->
+<!--            document.querySelector('#chat-log').value += (data.message + '\n');-->
+<!--        };-->
+
+<!--        chatSocket.onclose = function(e) {-->
+<!--            console.error('Chat socket closed unexpectedly');-->
+<!--        };-->
+
+<!--        document.querySelector('#chat-message-input').focus();-->
+<!--        document.querySelector('#chat-message-input').onkeyup = function(e) {-->
+<!--            if (e.keyCode === 13) {  // enter, return-->
+<!--                document.querySelector('#chat-message-submit').click();-->
+<!--            }-->
+<!--        };-->
+
+<!--        document.querySelector('#chat-message-submit').onclick = function(e) {-->
+<!--            const messageInputDom = document.querySelector('#chat-message-input');-->
+<!--            const message = messageInputDom.value;-->
+<!--            chatSocket.send(JSON.stringify({-->
+<!--                'message': message-->
+<!--            }));-->
+<!--            messageInputDom.value = '';-->
+<!--        };-->
+<!--    </script>-->
+
+
+Enter Chat and press enter
+<!--<div><input id=input placeholder="message" /></div>-->
+<!--Chat Output-->
+<!--<div id=box></div>-->
+<textarea id="box" cols="100" rows="20"></textarea><br>
+<input id="input" type="text" size="100">
+<script src=https://cdn.pubnub.com/sdk/javascript/pubnub.4.28.2.min.js></script>
+<script> (function() {
+        var pubnub = new PubNub({
+            publishKey: 'demo',
+            subscribeKey: 'demo'
+        });
+        function $(id) {
+            return document.getElementById(id);
+        }
+        var box = $('box'),
+            input = $('input'),
+            channel = '10chat-demo';
+        pubnub.addListener({
+            message: function(obj) {
+                box.innerHTML = ('' + obj.message).replace(/[<>]/g, '') + '<br>' + box.innerHTML
+            }
+        });
+        pubnub.subscribe({
+            channels: [channel]
+        });
+        input.addEventListener('keyup', function(e) {
+            if ((e.keyCode || e.charCode) === 13) {
+                pubnub.publish({
+                    channel: channel,
+                    message: input.value,
+                    x: (input.value = '')
+                });
+            }
+        });
+    })();
+</script>
+
+{% endblock %}

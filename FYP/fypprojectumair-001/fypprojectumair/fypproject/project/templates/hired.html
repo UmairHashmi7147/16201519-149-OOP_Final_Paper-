@@ -1,0 +1,121 @@
+{%  extends 'header.html' %}
+{% load static %}
+
+  {% block myblock %}
+
+<style>
+
+    .container{
+  margin: 20px;
+}
+
+/* autocomplete tagsinput*/
+.label-info {
+  background-color: #5bc0de;
+  display: inline-block;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25em;
+}
+
+
+    table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+</style>
+
+    <div class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_1.jpg' %});" data-stellar-background-ratio="1">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-start">
+          <div class="col-md-12 ftco-animate text-center mb-5">
+          	<p class="breadcrumbs mb-0"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Hired</span></p>
+            <h1 class="mb-3 bread">Hired</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<section class="ftco-section contact-section bg-light">
+      <div class="container" >
+        <div class="row block-9">
+          <div class="col-md-6 order-md-last d-flex"  style="margin-left:25%">
+            <form  class="bg-white p-5 contact-form" >
+
+
+                <h2>Hired Candidates </h2>
+
+                    <table>
+                      <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Full Detail</th>
+                      </tr>
+                        {%for finaldat in finaldatas%}
+                     <!-- <tr>% url 'show_menuitem' menuitem_slug=item.slug %-->
+                        <td>{{finaldat.d_resume_name}}</td>
+                        <td>{{finaldat.d_resume_fname}}</td>
+                        <td><a href="{{ finaldat.get_absolute_url   }}"><input  value="view detail" class="btn btn-primary py-3 px-5"></a></td>
+<!--                      <td><a href="/messages/"><input  value="Send Message" class="btn btn-primary py-3 px-5"></a></td>-->
+                        <td><a href="{{ finaldat.get_delcallforinterview_url }}">Delete</a></td>
+                      </tr>
+                         {%endfor%}
+                    </table>
+
+           </form>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+		<section class="ftco-section-parallax">
+      <div class="parallax-img d-flex align-items-center">
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+              <h2>Subcribe to our Newsletter</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+              <div class="row d-flex justify-content-center mt-4 mb-4">
+                <div class="col-md-12">
+                  <form action="#" class="subscribe-form">
+                    <div class="form-group d-flex">
+                      <input type="text" class="form-control" placeholder="Enter email address">
+                      <input type="submit" value="Subscribe" class="submit px-3">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,66 @@
+{%  extends 'header.html' %}
+{% load static %}
+
+  {% block myblock %}
+
+    <div class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_1.jpg' %});" data-stellar-background-ratio="1">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-start">
+          <div class="col-md-12 ftco-animate text-center mb-5">
+          	<p class="breadcrumbs mb-0"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Job Post</span></p>
+            <h1 class="mb-3 bread">Post A Job</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <section class="ftco-section contact-section bg-light">
+      <div class="container" >
+        <div class="row block-9">
+          <div class="col-md-6 order-md-last d-flex"  style="margin-left:25%">
+            <form action="http://127.0.0.1:8000/job_data_get/" class="bg-white p-5 contact-form" method="post">
+              {% csrf_token %}
+              <!--<div class="form-group">
+                <input type="text" class="form-control" placeholder="Job Title" name="job_title">
+              </div>
+              -->
+                <h3>Candidate Successfully Notified About his Interview</h3>
+              <div class="form-group">
+                <input type="submit" value="Main Page" class="btn btn-primary py-3 px-5">
+              </div>
+
+
+            </form>
+
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

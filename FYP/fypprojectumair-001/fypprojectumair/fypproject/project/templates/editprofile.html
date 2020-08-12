@@ -1,0 +1,689 @@
+{%  extends 'header1.html' %}
+{% load static %}
+
+  {% block myblock %}
+
+    <div class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_1.jpg' %});" data-stellar-background-ratio="1">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-start">
+          <div class="col-md-12 ftco-animate text-center mb-5">
+          	<p class="breadcrumbs mb-0"><span class="mr-3"><a href="/goprofile/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Edit Profile</span></p>
+            <h1 class="mb-3 bread">Edit Profile</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+        <section class="ftco-section contact-section bg-light">
+      <div class="container" >
+        <div class="row block-9">
+          <div class="col-md-6 order-md-last d-flex"  style="margin-left:25%">
+            <form action="http://127.0.0.1:8000/editprofile_into_database/" class="bg-white p-5 contact-form" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="form-group" >
+                  <select  class="form-control" id="d_resume_title"  data-live-search="true" name="d_resume_title" onchange="jobMatchingCandidates('count');" >
+                                                                <option value="">Choose Job Title</option>
+                                                                                                                                    <option value="1000" >Full stack web developer</option>
+                                                                                                                                    <option value="2000" >Mobile Application Developer</option>
+                                                                                                                                    <option value="3000" >Front end developer</option>
+                                                                                                                                    <option value="4000" >Backend Developer</option>
+
+                                                            </select>
+                </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Full Name" id="d_resume_name" name="d_resume_name">
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email" id="d_resume_email" name="d_resume_email">
+              </div>
+
+
+              <div class="form-group">
+                <input type="date" required class="form-control" placeholder="Date of Birth" id="d_resume_dob" name="d_resume_dob">
+              </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="CNIC" id="d_resume_cnic" name="d_resume_cnic">
+              </div>
+
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="Contact No" id="d_resume_contact" name="d_resume_contact">
+              </div>
+
+
+                <div class="form-group">
+
+
+                                               <select class="form-control" id="d_resume_gender" name="d_resume_gender" >
+<option value="" >Is there a gender preference for this job?</option>
+                                                 <option value="443" >
+                                                                Male
+                                                            </option>
+
+
+
+
+                                                            <option value="445" >
+                                                                Female
+                                                            </option>
+
+
+
+
+                                                            <option value="446" >
+                                                                Transgender
+                                                            </option>
+
+                                                </select>
+
+                                        </div>
+
+              <div class="form-group">
+                  <select class="form-control" id="d_resume_region" autocomplete="off" name="d_resume_region" >
+                                                    <option value="">Region</option>
+
+
+
+                                                                                                                <option value="Afghanistan"  >Afghanistan</option>
+
+
+                                                                                                                <option value="Albania"  >Albania</option>
+
+
+                                                                                                                <option value="Algeria"  >Algeria</option>
+
+
+                                                                                                                <option value="Angola"  >Angola</option>
+
+
+                                                                                                                <option value="Antigua"  >Antigua</option>
+
+
+                                                                                                                <option value="Argentina"  >Argentina</option>
+
+
+                                                                                                                <option value="Australia"  >Australia</option>
+
+
+                                                                                                                <option value="Austria"  >Austria</option>
+
+
+                                                                                                                <option value="Azerbaijan"  >Azerbaijan</option>
+
+
+                                                                                                                <option value="Bahrain"  >Bahrain</option>
+
+
+                                                                                                                <option value="Bangladesh"  >Bangladesh</option>
+
+
+                                                                                                                <option value="Barbados"  >Barbados</option>
+
+
+                                                                                                                <option value="Barbuda"  >Barbuda</option>
+
+
+                                                                                                                <option value="Belarus"  >Belarus</option>
+
+
+                                                                                                                <option value="Belgium"  >Belgium</option>
+
+
+                                                                                                                <option value="Belize"  >Belize</option>
+
+
+                                                                                                                <option value="Bosnia"  >Bosnia</option>
+
+
+                                                                                                                <option value="Botswana"  >Botswana</option>
+
+
+                                                                                                                <option value="Brazil"  >Brazil</option>
+
+
+                                                                                                                <option value="Brunei"  >Brunei</option>
+
+
+                                                                                                                <option value="Bulgaria"  >Bulgaria</option>
+
+
+                                                                                                                <option value="Burma"  >Burma</option>
+
+
+                                                                                                                <option value="Burundi"  >Burundi</option>
+
+
+                                                                                                                <option value="Cambodia"  >Cambodia</option>
+
+
+                                                                                                                <option value="Cameroon"  >Cameroon</option>
+
+
+                                                                                                                <option value="Canada"  >Canada</option>
+
+
+                                                                                                                <option value="Chad"  >Chad</option>
+
+
+                                                                                                                <option value="Chechnya"  >Chechnya</option>
+
+
+                                                                                                                <option value="Chile"  >Chile</option>
+
+
+                                                                                                                <option value="China"  >China</option>
+
+
+                                                                                                                <option value="Colombia"  >Colombia</option>
+
+
+                                                                                                                <option value="Congo"  >Congo</option>
+
+
+                                                                                                                <option value="Costa Rica"  >Costa Rica</option>
+
+
+                                                                                                                <option value="Croatia"  >Croatia</option>
+
+
+                                                                                                                <option value="Cuba"  >Cuba</option>
+
+
+                                                                                                                <option value="Cyprus"  >Cyprus</option>
+
+
+                                                                                                                <option value="Czech Rep"  >Czech Rep</option>
+
+
+                                                                                                                <option value="Democratic Republic of the Congo"  >Democratic Republic of the Congo</option>
+
+
+                                                                                                                <option value="Denmark"  >Denmark</option>
+
+
+                                                                                                                <option value="Djibouti"  >Djibouti</option>
+
+
+                                                                                                                <option value="Dominican Republic"  >Dominican Republic</option>
+
+
+                                                                                                                <option value="East Timor"  >East Timor</option>
+
+
+                                                                                                                <option value="Egypt"  >Egypt</option>
+
+
+                                                                                                                <option value="Eritrea"  >Eritrea</option>
+
+
+                                                                                                                <option value="Estonia"  >Estonia</option>
+
+
+                                                                                                                <option value="Ethiopia"  >Ethiopia</option>
+
+
+                                                                                                                <option value="Fiji"  >Fiji</option>
+
+
+                                                                                                                <option value="Finland"  >Finland</option>
+
+
+                                                                                                                <option value="France"  >France</option>
+
+
+                                                                                                                <option value="Gambia"  >Gambia</option>
+
+
+                                                                                                                <option value="Georgia"  >Georgia</option>
+
+
+                                                                                                                <option value="Germany"  >Germany</option>
+
+
+                                                                                                                <option value="Ghana"  >Ghana</option>
+
+
+                                                                                                                <option value="Gibraltar"  >Gibraltar</option>
+
+
+                                                                                                                <option value="Greece"  >Greece</option>
+
+
+                                                                                                                <option value="Guinea"  >Guinea</option>
+
+
+                                                                                                                <option value="Haiti"  >Haiti</option>
+
+
+                                                                                                                <option value="Hong Kong"  >Hong Kong</option>
+
+
+                                                                                                                <option value="Hungary"  >Hungary</option>
+
+
+                                                                                                                <option value="Iceland"  >Iceland</option>
+
+
+                                                                                                                <option value="India"  >India</option>
+
+
+                                                                                                                <option value="Indonesia"  >Indonesia</option>
+
+
+                                                                                                                <option value="Iran"  >Iran</option>
+
+
+                                                                                                                <option value="Iraq"  >Iraq</option>
+
+
+                                                                                                                <option value="Ireland"  >Ireland</option>
+
+
+                                                                                                                <option value="Italy"  >Italy</option>
+
+
+                                                                                                                <option value="Jamaica"  >Jamaica</option>
+
+
+                                                                                                                <option value="Japan"  >Japan</option>
+
+
+                                                                                                                <option value="Jordan"  >Jordan</option>
+
+
+                                                                                                                <option value="Kazakhstan"  >Kazakhstan</option>
+
+
+                                                                                                                <option value="Kenya"  >Kenya</option>
+
+
+                                                                                                                <option value="Kosovo"  >Kosovo</option>
+
+
+                                                                                                                <option value="Kuwait"  >Kuwait</option>
+
+
+                                                                                                                <option value="Kyrgyzstan"  >Kyrgyzstan</option>
+
+
+                                                                                                                <option value="Lao Peoples Democratic Republic"  >Lao Peoples Democratic Republic</option>
+
+
+                                                                                                                <option value="Latvia"  >Latvia</option>
+
+
+                                                                                                                <option value="Lebanon"  >Lebanon</option>
+
+
+                                                                                                                <option value="Liberia"  >Liberia</option>
+
+
+                                                                                                                <option value="Libya"  >Libya</option>
+
+
+                                                                                                                <option value="Luxembourg"  >Luxembourg</option>
+
+
+                                                                                                                <option value="Madagascar"  >Madagascar</option>
+
+
+                                                                                                                <option value="Malawi"  >Malawi</option>
+
+
+                                                                                                                <option value="Malaysia"  >Malaysia</option>
+
+
+                                                                                                                <option value="Maldives"  >Maldives</option>
+
+
+                                                                                                                <option value="Mali"  >Mali</option>
+
+
+                                                                                                                <option value="Malta"  >Malta</option>
+
+
+                                                                                                                <option value="Mauritania"  >Mauritania</option>
+
+
+                                                                                                                <option value="Mauritius"  >Mauritius</option>
+
+
+                                                                                                                <option value="Mexico"  >Mexico</option>
+
+
+                                                                                                                <option value="Morocco"  >Morocco</option>
+
+
+                                                                                                                <option value="Mozambique"  >Mozambique</option>
+
+
+                                                                                                                <option value="Nepal"  >Nepal</option>
+
+
+                                                                                                                <option value="Netherlands"  >Netherlands</option>
+
+
+                                                                                                                <option value="New Zealand"  >New Zealand</option>
+
+
+                                                                                                                <option value="Niger"  >Niger</option>
+
+
+                                                                                                                <option value="Nigeria"  >Nigeria</option>
+
+
+                                                                                                                <option value="Norway"  >Norway</option>
+
+
+                                                                                                                <option value="Oman"  >Oman</option>
+
+
+                                                                                                                <option value="Pakistan" selected >Pakistan</option>
+
+
+                                                                                                                <option value="Palestine"  >Palestine</option>
+
+
+                                                                                                                <option value="Papua New Guinea"  >Papua New Guinea</option>
+
+
+                                                                                                                <option value="Peru"  >Peru</option>
+
+
+                                                                                                                <option value="Philippines"  >Philippines</option>
+
+
+                                                                                                                <option value="Poland"  >Poland</option>
+
+
+                                                                                                                <option value="Portugal"  >Portugal</option>
+
+
+                                                                                                                <option value="Puerto Rico"  >Puerto Rico</option>
+
+
+                                                                                                                <option value="Qatar"  >Qatar</option>
+
+
+                                                                                                                <option value="Romania"  >Romania</option>
+
+
+                                                                                                                <option value="Russia"  >Russia</option>
+
+
+                                                                                                                <option value="Rwanda"  >Rwanda</option>
+
+
+                                                                                                                <option value="Saudi Arabia"  >Saudi Arabia</option>
+
+
+                                                                                                                <option value="Senegal"  >Senegal</option>
+
+
+                                                                                                                <option value="Serbia"  >Serbia</option>
+
+
+                                                                                                                <option value="Sierra Leone"  >Sierra Leone</option>
+
+
+                                                                                                                <option value="Singapore"  >Singapore</option>
+
+
+                                                                                                                <option value="Slovakia"  >Slovakia</option>
+
+
+                                                                                                                <option value="Slovenia"  >Slovenia</option>
+
+
+                                                                                                                <option value="Solomon Islands"  >Solomon Islands</option>
+
+
+                                                                                                                <option value="Somalia"  >Somalia</option>
+
+
+                                                                                                                <option value="South Africa"  >South Africa</option>
+
+
+                                                                                                                <option value="South Georgia"  >South Georgia</option>
+
+
+                                                                                                                <option value="South Korea"  >South Korea</option>
+
+
+                                                                                                                <option value="South Sudan"  >South Sudan</option>
+
+
+                                                                                                                <option value="Spain"  >Spain</option>
+
+
+                                                                                                                <option value="Sri Lanka"  >Sri Lanka</option>
+
+
+                                                                                                                <option value="Sudan"  >Sudan</option>
+
+
+                                                                                                                <option value="Svalbard"  >Svalbard</option>
+
+
+                                                                                                                <option value="Sweden"  >Sweden</option>
+
+
+                                                                                                                <option value="Switzerland"  >Switzerland</option>
+
+
+                                                                                                                <option value="Syria"  >Syria</option>
+
+
+                                                                                                                <option value="Taiwan"  >Taiwan</option>
+
+
+                                                                                                                <option value="Tajikistan"  >Tajikistan</option>
+
+
+                                                                                                                <option value="Tanzania"  >Tanzania</option>
+
+
+                                                                                                                <option value="Thailand"  >Thailand</option>
+
+
+                                                                                                                <option value="Tunisia"  >Tunisia</option>
+
+
+                                                                                                                <option value="Turkey"  >Turkey</option>
+
+
+                                                                                                                <option value="Turkmenistan"  >Turkmenistan</option>
+
+
+                                                                                                                <option value="Uganda"  >Uganda</option>
+
+
+                                                                                                                <option value="Ukraine"  >Ukraine</option>
+
+
+                                                                                                                <option value="United Arab Emirates"  >United Arab Emirates</option>
+
+
+                                                                                                                <option value="United Kingdom"  >United Kingdom</option>
+
+
+                                                                                                                <option value="USA"  >USA</option>
+
+
+                                                                                                                <option value="Uzbekistan"  >Uzbekistan</option>
+
+
+                                                                                                                <option value="Venezuela"  >Venezuela</option>
+
+
+                                                                                                                <option value="Vietnam"  >Vietnam</option>
+
+
+                                                                                                                <option value="Yemen"  >Yemen</option>
+
+
+                                                                                                                <option value="Zimbabwe"  >Zimbabwe</option>
+
+                                                </select>
+                                            </div>
+                <div class="form-group" >
+                  <select  class="form-control" id="d_resume_career_level"  data-live-search="true" name="d_resume_career_level" onchange="jobMatchingCandidates('count');" >
+                                                                <option value="">Choose career level</option>
+                                                                                                                                    <option value="685" >Intern/Student</option>
+                                                                                                                                    <option value="868" >Entry Level</option>
+                                                                                                                                    <option value="693" >Experienced Professional</option>
+                                                                                                                                    <option value="698" >Department Head</option>
+                                                                                                                                    <option value="697" >GM / CEO / Country Head / President</option>
+
+                  </select></div>
+
+              <div class="form-group">
+                                                <select class="form-control" id="d_resume_degreelevel" autocomplete="off" name="d_resume_degreelevel" >
+                                                    <option value="" >Select degree level</option>
+                                                                                                              <option value="900" >Pharm-D</option>
+                                                                                                            <option value="836" >Non-Matriculation</option>
+                                                                                                            <option value="838" >Matriculation/O-Level</option>
+                                                                                                            <option value="840" >Intermediate/A-Level</option>
+                                                                                                            <option value="369" >Bachelor</option>
+                                                                                                            <option value="373" >Master</option>
+                                                                                                            <option value="844" >MBBS/D-Pharm/BDS</option>
+                                                                                                            <option value="842" >M-Phill</option>
+                                                                                                            <option value="375" >PHD/Doctorate</option>
+                                                                                                            <option value="846" >Certification</option>
+                                                                                                            <option value="371" >Diploma</option>
+                                                                                                            <option value="1243" >Short Course</option>
+
+                                                </select>
+                                            </div>
+
+                <div class="form-group">
+                                                <select class="form-control" id="d_resume_subdegreelevel" autocomplete="off" name="d_resume_subdegreelevel" >
+                                                    <option value="" >Select degree </option>
+                                                                                                            <option value="2000" >CS</option>
+                                                                                                            <option value="1500" >IT</option>
+                                                                                                            <option value="1000" >SE</option>
+
+                                                </select>
+                                            </div>
+
+               <div class="form-group">
+                <input type="text" required id="d_resume_skills" class="form-control" placeholder="Skills" name="d_resume_skills">
+              </div>
+                <script>var data =
+  '[{ "value": "python", "text": "python", "continent": "Task" }, { "value": "php", "text": "php", "continent": "Task" }, { "value": "java", "text": "java", "continent": "Task" }, { "value": "django", "text": "django", "continent": "Task" }, { "value": "asp.net", "text": "asp.net", "continent": "Task" }, { "value": "c++", "text": "c++", "continent": "Task" } ]';
+
+//get data pass to json
+var task = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace("text"),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  local: jQuery.parseJSON(data) //your can use json type
+});
+
+task.initialize();
+
+var elt = $("#d_resume_skills");
+elt.tagsinput({
+  itemValue: "value",
+  itemText: "text",
+  typeaheadjs: {
+    name: "task",
+    displayKey: "text",
+    source: task.ttAdapter()
+  }
+});
+
+
+</script>
+              <div class="form-group">
+                                                <select class="form-control" id="d_resume_experience" name="d_resume_experience" >
+                                                    <option value=""  id="d_resume_experiences">Experience</option>
+                                                        <option value="Fresh" >Fresh</option>
+                                                                                                            <option value="0.5" >Less than 1 Year</option>
+                                                                                                            <option value="1" >1 Year</option>
+                                                                                                            <option value="2" >2 Years</option>
+                                                                                                            <option value="3" >3 Years</option>
+                                                                                                            <option value="4" >4 Years</option>
+                                                                                                            <option value="5" >5 Years</option>
+                                                                                                            <option value="6" >6 Years</option>
+                                                                                                            <option value="7" >7 Years</option>
+                                                                                                            <option value="8" >8 Years</option>
+                                                                                                            <option value="9" >9 Years</option>
+                                                                                                            <option value="10" >10 Years</option>
+                                                                                                            <option value="11" >11 Years</option>
+                                                                                                            <option value="12" >12 Years</option>
+                                                                                                            <option value="13" >13 Years</option>
+                                                                                                            <option value="14" >14 Years</option>
+                                                                                                            <option value="15" >15 Years</option>
+                                                                                                            <option value="16" >16 Years</option>
+                                                                                                            <option value="17" >17 Years</option>
+                                                                                                            <option value="18" >18 Years</option>
+                                                                                                            <option value="19" >19 Years</option>
+                                                                                                            <option value="20" >20 Years</option>
+                                                                                                            <option value="21" >21 Years</option>
+                                                                                                            <option value="22" >22 Years</option>
+                                                                                                            <option value="23" >23 Years</option>
+                                                                                                            <option value="24" >24 Years</option>
+                                                                                                            <option value="25" >25 Years</option>
+                                                                                                            <option value="26" >26 Years</option>
+                                                                                                            <option value="27" >27 Years</option>
+                                                                                                            <option value="28" >28 Years</option>
+                                                                                                            <option value="29" >29 Years</option>
+                                                                                                            <option value="30" >30 Years</option>
+                                                                                                            <option value="31" >31 Years</option>
+                                                                                                            <option value="32" >32 Years</option>
+                                                                                                            <option value="33" >33 Years</option>
+                                                                                                            <option value="34" >34 Years</option>
+                                                                                                            <option value="35" >35 Years</option>
+                                                                                                            <option value="36" >More than 35 Years</option>
+
+                                                </select>
+
+                                        </div>
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="Description" id="d_resume_description" name="d_resume_description">
+              </div>
+
+                <div class="form-group">
+                <img  id="d_resume_profile" src="{{image.url  }}" width="200px" height="200px" alt="No image">
+
+              </div>
+                                  <div class="col-xl-12 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                      <label for="d_resume_profile1"><font color="red">Upload Image</font></label><br>
+                                                <input type="file" id="d_resume_profile1" name="d_resume_profile1">
+                                                </div><br>
+                <script>
+                  document.getElementById("d_resume_title").value = "{{title}}";
+                  document.getElementById("d_resume_name").value = "{{name}}"
+                  document.getElementById("d_resume_email").value = "{{email}}"
+                  document.getElementById("d_resume_dob").value = "{{dob}}"
+                  document.getElementById("d_resume_cnic").value = "{{cnic}}"
+                  document.getElementById("d_resume_contact").value = "{{mobile_number}}"
+                  document.getElementById("d_resume_gender").value = "{{gender}}"
+                  document.getElementById("d_resume_region").value = "{{region}}"
+                  document.getElementById("d_resume_career_level").value = "{{career_level}}"
+                  document.getElementById("d_resume_degreelevel").value = "{{degree_level}}"
+                  document.getElementById("d_resume_subdegreelevel").value = "{{sub_degree_level}}"
+                  document.getElementById("d_resume_skills").value = "{{skills}}"
+                  document.getElementById("d_resume_experience").value = "{{experience}}"
+                  document.getElementById("d_resume_description").value = "{{description}}"
+                  //document.getElementById("d_resume_profile").value = "{{image.url}}"
+              </script>
+
+
+              <div class="form-group">
+                <input type="submit" value="UPDATE" class="btn btn-primary py-3 px-5">
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+
+    {% endblock %}

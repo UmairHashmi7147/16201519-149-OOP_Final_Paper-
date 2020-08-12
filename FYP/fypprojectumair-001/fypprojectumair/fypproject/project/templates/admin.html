@@ -1,0 +1,88 @@
+{%  extends 'header3.html' %}
+{% load static %}
+{% block  extrahead %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        total=100;
+       var pol=parseInt(document.getElementById("pol").value);
+        var net=parseInt(document.getElementById("net").value);
+        var wpos=parseInt(document.getElementById("wpos").value);
+        var pos=parseInt(document.getElementById("pos").value);
+        var spos=parseInt(document.getElementById("spos").value);
+        var wneg=parseInt(document.getElementById("wneg").value);
+        var neg=parseInt(document.getElementById("neg").value);
+        var sneg=parseInt(document.getElementById("sneg").value);
+        var sum=pol+net+wpos+pos+spos+wneg+neg+sneg;
+        var avg=(100-sum)/8;
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'total'],
+          ['Polarity',pol+avg],
+          ['Positive',pos+avg],
+          ['Weakly-Positive',wpos+avg],
+          ['Strongly-Positive',spos+avg],
+          ['Negative',neg+avg],
+          ['Weakly-Negative',wneg+avg],
+          ['Strongly-Negative',sneg+avg],
+          ['Neutral',net+avg]
+        ]);
+
+        var options = {
+          title: 'Feedback Sentimental Analysis'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+
+
+
+
+
+
+
+</script>
+       {% endblock %}
+
+
+
+
+  {% block myblock %}
+
+
+
+    <div class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_1.jpg' %});" data-stellar-background-ratio="1">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-start">
+          <div class="col-md-12 ftco-animate text-center mb-5">
+          	<p class="breadcrumbs mb-0"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Job Post</span></p>
+            <h1 class="mb-3 bread">Sentimental Analysis</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <section class="ftco-section contact-section bg-light">
+      <div class="container">
+
+           <div id="piechart" style="width: 900px; height: 500px;"></div>
+      </div>
+       <input hidden type="text" value="{{pol}}" id="pol" >
+       <input hidden type="number" value="{{net}}" id="net" >
+       <input hidden type="number" value="{{wpos}}" id="wpos" >
+       <input hidden type="number" value="{{pos}}" id="pos" >
+       <input hidden type="number" value="{{spos}}" id="spos" >
+       <input hidden type="number" value="{{neg}}" id="neg" >
+       <input hidden type="number" value="{{sneg}}" id="sneg" >
+       <input hidden style="margin-left:100px" type="number" value="{{wneg}}" id="wneg" >
+
+
+
+    </section>
+
+     {% endblock %}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+   <head>
+    <title>Skills Based Employee Recommender System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{%static 'css/open-iconic-bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/animate.css'%}">
+
+    <link rel="stylesheet" href="{%static 'css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/magnific-popup.css'%}">
+
+    <link rel="stylesheet" href="{%static 'css/aos.css'%}">
+
+    <link rel="stylesheet" href="{%static 'css/ionicons.min.css'%}">
+
+    <link rel="stylesheet" href="{%static 'css/bootstrap-datepicker.css'%}">
+    <link rel="stylesheet" href="{%static 'css/jquery.timepicker.css'%}">
+
+
+    <link rel="stylesheet" href="{%static 'css/flaticon.css'%}">
+    <link rel="stylesheet" href="{%static 'css/icomoon.css'%}">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+
+       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        total=100;
+       var pol=parseInt(document.getElementById("pol").value);
+        var net=parseInt(document.getElementById("net").value);
+        var wpos=parseInt(document.getElementById("wpos").value);
+        var pos=parseInt(document.getElementById("pos").value);
+        var spos=parseInt(document.getElementById("spos").value);
+        var wneg=parseInt(document.getElementById("wneg").value);
+        var neg=parseInt(document.getElementById("neg").value);
+        var sneg=parseInt(document.getElementById("sneg").value);
+        var sum=pol+net+wpos+pos+spos+wneg+neg+sneg;
+        var avg=(100-sum)/8;
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'total'],
+          ['Polarity',pol+avg],
+          ['Positive',pos+avg],
+          ['Weakly-Positive',wpos+avg],
+          ['Strongly-Positive',spos+avg],
+          ['Negative',neg+avg],
+          ['Weakly-Negative',wneg+avg],
+          ['Strongly-Negative',sneg+avg],
+          ['Neutral',net+avg]
+        ]);
+
+        var options = {
+          title: 'Feedback Sentimental Analysis'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+
+
+
+    </script>
+
+
+       <script>
+  // barsVisualization must be global in our script tag to be able
+  // to get and set selection.
+  var barsVisualization;
+
+  function drawMouseoverVisualization() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Year');
+    data.addColumn('number', 'Score');
+    data.addRows([
+      ['2005',3.6],
+      ['2006',4.1],
+      ['2007',3.8],
+      ['2008',3.9],
+      ['2009',4.6]
+    ]);
+
+    barsVisualization = new google.visualization.ColumnChart(document.getElementById('mouseoverdiv'));
+    barsVisualization.draw(data, null);
+
+    // Add our over/out handlers.
+    google.visualization.events.addListener(barsVisualization, 'onmouseover', barMouseOver);
+    google.visualization.events.addListener(barsVisualization, 'onmouseout', barMouseOut);
+  }
+
+  function barMouseOver(e) {
+    barsVisualization.setSelection([e]);
+  }
+
+  function barMouseOut(e) {
+    barsVisualization.setSelection([{'row': null, 'column': null}]);
+  }
+
+</script>
+
+
+
+  </head>
+  <body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container-fluid px-md-4	">
+	      <a class="navbar-brand" href="index.html">Skills Based Employee Recommender System</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+	          <li class="nav-item active"><a href="#" class="nav-link">Profile</a></li>
+	          <li class="nav-item cta mr-md-1"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+	          <!--<li class="nav-item cta cta-colored"><a href="/login" class="nav-link">Want a Job</a></li>-->
+
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+
+    <div class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_1.jpg' %});" data-stellar-background-ratio="1">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-start">
+          <div class="col-md-12 ftco-animate text-center mb-5">
+          	<p class="breadcrumbs mb-0"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Job Post</span></p>
+            <h1 class="mb-3 bread">Sentimental Analysis</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <section class="ftco-section contact-section bg-light">
+      <div class="container">
+
+       <input type="text" value="{{pol}}" id="pol" >
+       <input type="number" value="{{net}}" id="net" >
+       <input type="number" value="{{wpos}}" id="wpos" >
+       <input type="number" value="{{pos}}" id="pos" >
+       <input type="number" value="{{spos}}" id="spos" >
+       <input type="number" value="{{neg}}" id="neg" >
+       <input type="number" value="{{sneg}}" id="sneg" >
+       <input style="margin-left:100px" type="number" value="{{wneg}}" id="wneg" >
+
+      </div>
+
+
+    </section>
+
+
+       <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+        	<div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Skills Based Employee Recommender System</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="https://www.facebook.com/Skills-Based-Employee-Recommender-102958851182501/"><span class="icon-facebook"></span></a></li>
+                  <li class="ftco-animate"><a href=""><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Employee Recruiting Agency</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="pb-1 d-block">Browse Candidates</a></li>
+                <li><a href="#" class="pb-1 d-block">Post a Job</a></li>
+                <li><a href="#" class="pb-1 d-block">Job Seekers Listing</a></li>
+                <li><a href="#" class="pb-1 d-block">Resume Page</a></li>
+                <li><a href="#" class="pb-1 d-block">Dashboard</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2">Job Seekers</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="pb-1 d-block">Browse Jobs</a></li>
+                <li><a href="#" class="pb-1 d-block">Submit Resume</a></li>
+                <li><a href="#" class="pb-1 d-block">Dashboard</a></li>
+                <li><a href="#" class="pb-1 d-block">Update Resume</a></li>
+                <li><a href="#" class="pb-1 d-block">My Bookmarks</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2">Account</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="pb-1 d-block">My Account</a></li>
+                <li><a href="#" class="pb-1 d-block">Sign In</a></li>
+                <li><a href="#" class="pb-1 d-block">Create Account</a></li>
+                <li><a href="#" class="pb-1 d-block">Checkout</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>{%load static%}
+	                <li><span class="icon icon-map-marker"></span><span class="text">  University Of Gujrat(Hafiz Hayat Campus)</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+923144757507</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">kindghouri@gmail.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <script src="{%static 'js/jquery.min.js'%}"></script>
+  <script src="{%static 'js/jquery-migrate-3.0.1.min.js'%}"></script>
+  <script src="{%static 'js/popper.min.js'%}"></script>
+  <script src="{%static 'js/bootstrap.min.js'%}"></script>
+  <script src="{%static 'js/jquery.easing.1.3.js'%}"></script>
+  <script src="{%static 'js/jquery.waypoints.min.js'%}"></script>
+  <script src="{%static 'js/jquery.stellar.min.js'%}"></script>
+  <script src="{%static 'js/owl.carousel.min.js'%}"></script>
+  <script src="{%static 'js/jquery.magnific-popup.min.js'%}"></script>
+  <script src="{%static 'js/aos.js'%}"></script>
+  <script src="{%static 'js/jquery.animateNumber.min.js'%}"></script>
+  <script src="{%static 'js/scrollax.min.js'%}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{%static 'js/google-map.js'%}"></script>
+  <script src="{%static 'js/main.js'%}"></script>
+  </body>
+</html>

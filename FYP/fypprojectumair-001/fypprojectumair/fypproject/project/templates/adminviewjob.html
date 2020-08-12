@@ -1,0 +1,196 @@
+{%  extends 'header3.html' %}
+{% load static %}
+
+  {% block myblock %}
+
+<style>
+
+    .container{
+  margin: 20px;
+}
+
+/* autocomplete tagsinput*/
+.label-info {
+  background-color: #5bc0de;
+  display: inline-block;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25em;
+}
+
+</style>
+    <div class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_1.jpg' %});" data-stellar-background-ratio="1">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-start">
+          <div class="col-md-12 ftco-animate text-center mb-5">
+          	<p class="breadcrumbs mb-0"><span class="mr-3"><a href="/goprofile/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Job Post</span></p>
+            <h1 class="mb-3 bread">Job Requested Detail</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <section class="ftco-section contact-section bg-light">
+      <div class="container" >
+        <div class="row block-9">
+
+
+
+{% for data in param %}
+
+            {% if data.job_title == '1000' %}
+                  Job_title : <input class="form-control" disabled id="job_title" value="Full stack web developer"   name="job_title" ><br>
+            {% endif %}
+
+            {% if data.job_title == '2000' %}
+                  Job_title : <input class="form-control" disabled id="job_title" value="Mobile Application Developer"   name="job_title" ><br>
+            {% endif %}
+
+            {% if data.job_title == '3000' %}
+                  Job_title : <input class="form-control" disabled id="job_title" value="Front end developer"   name="job_title" ><br>
+            {% endif %}
+
+            {% if data.job_title == '4000' %}
+                  Job_title : <input class="form-control" disabled id="job_title" value="Backend Developer"   name="job_title" ><br>
+            {% endif %}
+
+                Job Description : <input type="text" disabled class="form-control" value="{{data.job_description}}"  id="job_description" name="job_description"><br>
+
+                Job_skills : <input type="text" disabled id="job_skills" class="form-control" value="{{data.job_skills}}" name="job_skills"><br>
+                  Job_skills_periority : <input disabled class="form-control" id="job_skills_periority" value="{{data.job_skills_periority}}"   name="job_skills_periority"  ><br>
+
+            {% if data.job_career_level == '686' %}
+                  Job_career_level :<input class="form-control" disabled id="job_career_level" value="Intern/Student"   name="job_career_level"  ><br>
+            {% endif %}
+            {% if data.job_career_level == '868' %}
+                  Job_career_level :<input class="form-control" disabled id="job_career_level" value="Entry Level"   name="job_career_level"  ><br>
+            {% endif %}
+            {% if data.job_career_level == '693' %}
+                  Job_career_level :<input class="form-control" disabled id="job_career_level" value="Experienced Professional"   name="job_career_level"  ><br>
+            {% endif %}
+            {% if data.job_career_level == '698' %}
+                  Job_career_level :<input class="form-control" disabled id="job_career_level" value="Department Head"   name="job_career_level"  ><br>
+            {% endif %}
+            {% if data.job_career_level == '697' %}
+                  Job_career_level :<input class="form-control" disabled id="job_career_level" value="GM / CEO / Country Head / President"   name="job_career_level"  ><br>
+            {% endif %}
+                  Job_career_level_periority :  <input  class="form-control" disabled id="job_career_level_periority" value="{{data.job_career_level_periority}}"   name="job_career_level_periority"  ><br>
+
+
+                No. of Positions  <input class="form-control" disabled id="job_positions" value="{{data.job_positions}}" name="job_positions" ><br>
+
+
+                 Country : <input class="form-control" disabled value="{{data.job_country}}" id="job_country" name="job_country"><br>
+            {% if data.job_degree_level == '900' %}
+            job_degree_level : <input disabled class="form-control" id="job_degree_level" value="Pharm-D" name="job_degree_level" ><br>
+            {% endif %}
+            {% if data.job_degree_level == '836' %}
+            job_degree_level : <input class="form-control" disabled id="job_degree_level" value="Non-Matriculation" name="job_degree_level" ><br>
+            {% endif %}
+            {% if data.job_degree_level == '838' %}
+            job_degree_level : <input class="form-control" disabled id="job_degree_level" value="Matriculation/O-Level" name="job_degree_level" ><br>
+            {% endif %}
+            {% if data.job_degree_level == '840' %}
+            job_degree_level : <input class="form-control" disabled id="job_degree_level" value="Intermediate/A-Level" name="job_degree_level" ><br>
+            {% endif %}
+            {% if data.job_degree_level == '369' %}
+            job_degree_level : <input class="form-control" disabled id="job_degree_level" value="Bachelor" name="job_degree_level" ><br>
+            {% endif %}
+            {% if data.job_degree_level == '373' %}
+            job_degree_level : <input class="form-control" disabled id="job_degree_level" value="Master" name="job_degree_level" ><br>
+            {% endif %}
+            {% if data.job_degree_level == '844' %}
+            job_degree_level : <input class="form-control" disabled id="job_degree_level" value="MBBS/D-Pharm/BDS" name="job_degree_level" ><br>
+            {% endif %}
+            {% if data.job_degree_level == '842' %}
+            job_degree_level : <input class="form-control" disabled id="job_degree_level" value="M-Phill" name="job_degree_level" ><br>
+            {% endif %}
+            {% if data.job_degree_level == '375' %}
+            job_degree_level : <input class="form-control" disabled id="job_degree_level" value="PHD/Doctorate" name="job_degree_level" ><br>
+            {% endif %}
+            {% if data.job_degree_level == '846' %}
+            job_degree_level : <input class="form-control" disabled id="job_degree_level" value="Certification" name="job_degree_level" ><br>
+            {% endif %}
+            {% if data.job_degree_level == '371' %}
+            job_degree_level : <input class="form-control" disabled id="job_degree_level" value="Diploma" name="job_degree_level" ><br>
+            {% endif %}
+            {% if data.job_degree_level == '1243' %}
+            job_degree_level : <input class="form-control" disabled id="job_degree_level" value="Short Course" name="job_degree_level" ><br>
+            {% endif %}
+            job_degree_level_periority : <input  class="form-control" disabled id="job_degree_level_periority" value="{{data.job_degree_level_periority}}" name="job_degree_level_periority"  ><br>
+
+            job_min_experience : <input class="form-control" disabled id="job_min_experience" value="{{data.job_min_experience}}" name="job_min_experience" ><br>
+            job_experience_periority : <input  class="form-control" disabled id="job_experience_periority" value="{{data.job_experience_periority}}" name="job_experience_periority"  ><br>
+
+
+             job_min_sallery : <input class="form-control" disabled value="{{data.job_min_sallery}}" id="job_min_sallery" name="job_min_sallery" ><br>
+
+           job_max_sallery  :<input class="form-control" disabled id="job_max_sallery" value="{{data.job_max_sallery}}" name="job_max_sallery" ><br>
+            {% if data.job_prefrence == '443' %}
+                job_prefrence  : <input class="form-control" disabled id="job_prefrence" value="Male" name="job_prefrence" ><br>
+            {% endif %}
+            {% if data.job_prefrence == '445' %}
+                job_prefrence  : <input class="form-control" disabled id="job_prefrence" value="Female" name="job_prefrence" ><br>
+            {% endif %}
+            {% if data.job_prefrence == '446' %}
+                job_prefrence  : <input class="form-control" disabled id="job_prefrence" value="Transparent" name="job_prefrence" ><br>
+            {% endif %}
+          job_prefrence_periority :  <input  class="form-control" disabled id="job_prefrence_periority" value="{{data.job_prefrence_periority}}"   name="job_prefrence_periority"  ><br>
+
+{% endfor %}
+
+
+
+        </div>
+      </div>
+    </section>
+
+<!--  <section class="ftco-section contact-section bg-light">-->
+<!--      <div class="container" >-->
+<!--        <div class="row block-9">-->
+<!--          <div class="col-md-6 order-md-last d-flex"  style="margin-left:25%">-->
+<!--&lt;!&ndash;            <form action="http://127.0.0.1:8000/job_data_get/" class="bg-white p-5 contact-form" method="post">&ndash;&gt;-->
+<!--              <form action="http://127.0.0.1:8000/job_data_get/" class="bg-white p-5 contact-form" method="post">-->
+<!--              {% csrf_token %}-->
+<!--              <div class="form-group">-->
+<!--                <input type="submit" value="Recommend Candidates" class="btn btn-primary py-3 px-5">-->
+<!--              </div>-->
+<!--              </form>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--  </section>-->
+
+		<section class="ftco-section-parallax">
+      <div class="parallax-img d-flex align-items-center">
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+              <h2>Subcribe to our Newsletter</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+              <div class="row d-flex justify-content-center mt-4 mb-4">
+                <div class="col-md-12">
+                  <form action="#" class="subscribe-form">
+                    <div class="form-group d-flex">
+                      <input type="text" class="form-control" placeholder="Enter email address">
+                      <input type="submit" value="Subscribe" class="submit px-3">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+ {% endblock %}
