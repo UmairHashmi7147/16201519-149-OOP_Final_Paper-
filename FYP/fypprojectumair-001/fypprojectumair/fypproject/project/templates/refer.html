@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>Final Paper</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}"/>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap" rel="stylesheet"/>
+
+    <link rel="stylesheet"  href="{%static 'css/open-iconic-bootstrap.min.css'%}"/>
+    <link rel="stylesheet"  href="{%static 'css/animate.css'%}"/>
+
+    <link rel="stylesheet"   href="{%static 'css/owl.carousel.min.css'%}"/>
+    <link rel="stylesheet"  href="{%static 'css/owl.theme.default.min.css'%}"/>
+    <link rel="stylesheet"  href="{%static 'css/magnific-popup.css'%}"/>
+
+    <link rel="stylesheet"  href="{%static 'css/aos.css' %}"/>
+
+    <link rel="stylesheet"  href="{%static 'css/ionicons.min.css'%}"/>
+
+    <link rel="stylesheet"  href="{%static 'css/bootstrap-datepicker.css'%}"/>
+    <link rel="stylesheet"  href="{%static 'css/jquery.timepicker.css'%}"/>
+
+
+    <link rel="stylesheet"  href="{%static 'css/flaticon.css'%}"/>
+    <link rel="stylesheet"  href="{%static 'css/icomoon.css'%}"/>
+    <link rel="stylesheet"  href="{%static 'css/style.css'%}"/>
+
+    <title>Title</title>
+
+<style>
+
+    .container{
+  margin: 20px;
+}
+
+/* autocomplete tagsinput*/
+.label-info {
+  background-color: #5bc0de;
+  display: inline-block;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25em;
+}
+
+
+    table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 28px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+</style>
+</head>
+ <body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container-fluid px-md-4	">
+	      <a class="nav-item cta mr-md-1" href="/">Ghufran Khan Final Paper</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item cta mr-md-1"><a href="/" class="nav-link">Home</a></li>
+	          <li class="nav-item cta cta-colored"><a href="/viewdata/" class="nav-link">View Data</a></li>
+	          <li class="nav-item cta mr-md-1"><a href="/insertdata/" class="nav-link">Insert Data</a></li>
+	          <li class="nav-item cta cta-colored"><a href="/deldata/" class="nav-link">Delete Data</a></li>
+	          <li class="nav-item cta mr-md-1"><a href="/updatedata/" class="nav-link">Update</a></li>
+
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+
+
+   <section class="ftco-section contact-section bg-light">
+      <div class="container" >
+        <div class="row block-9">
+          <div class="col-md-6 order-md-last d-flex"  style="margin-left:25%">
+<form action="/refered/" class="bg-white p-5 contact-form" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+     {%for finaldat in param%}
+                     <!-- <tr>% url 'show_menuitem' menuitem_slug=item.slug %-->
+
+
+                <div class="form-group" >
+                  <input hidden type="text"  class="form-control"  value="{{param}}" id="slug" name="slug" >
+
+                </div>
+             {% endfor %}
+ <div class="form-group" >
+                  <input  type="text" placeholder="Enter Department Name" class="form-control"   id="dname" name="dname" >
+
+                </div>
+    <select  class="form-control" id="department"  data-live-search="true" name="department"  >
+                                                                <option value="">Choose Department</option>
+                                                                                                                                    <option value="M" >Medical</option>
+                                                                                                                                    <option value="S" >Surgicsal</option>
+                                                                                                                                    <option value="O" >OTP</option>
+                                                                                                                                    <option value="I" >ICU</option>
+                                                                                                                                    <option value="IT" >ITC</option>
+
+
+                                                            </select>
+
+    <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary py-3 px-5">
+              </div>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
